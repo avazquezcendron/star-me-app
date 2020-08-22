@@ -3,3 +3,5 @@
 ################################################################################
 
 /.vs
+/Backend/StarMeApp/.vs/StarMeApp
+/Backend/StarMeApp/bin/Debug/netcoreapp3.1
