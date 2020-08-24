@@ -1,0 +1,147 @@
+USE [StarMeAppDB]
+GO
+
+/****** Object:  Table [dbo].[Star]    Script Date: 8/23/2020 12:58:59 PM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[Star](
+	[IdStar] [numeric](14, 0) IDENTITY(1,1) NOT NULL,
+	[Title] [varchar](30) NOT NULL,
+	[Summary] [varchar](200) NOT NULL,
+	[Content] [text] NOT NULL,
+	[CreateTime] [datetime2](7) NULL,
+	[UpdateTime] [datetime2](7) NULL,
+	[Status] [char](1) NULL,
+	[GuidStamp] [binary](16) NOT NULL,
+	[IdUser] [numeric](14, 0) NOT NULL,
+ CONSTRAINT [PK_Star] PRIMARY KEY CLUSTERED 
+(
+	[IdStar] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+
+ALTER TABLE [dbo].[Star] ADD  CONSTRAINT [DF_Star_CreateTime]  DEFAULT (getdate()) FOR [CreateTime]
+GO
+
+ALTER TABLE [dbo].[Star] ADD  CONSTRAINT [DF_Star_Status]  DEFAULT ('A') FOR [Status]
+GO
+
+ALTER TABLE [dbo].[Star] ADD  CONSTRAINT [DF_Star_GuidStamp]  DEFAULT ((0.)) FOR [GuidStamp]
+GO
+
+ALTER TABLE [dbo].[Star]  WITH CHECK ADD  CONSTRAINT [FK_Star_User] FOREIGN KEY([IdUser])
+REFERENCES [dbo].[User] ([IdUser])
+GO
+
+ALTER TABLE [dbo].[Star] CHECK CONSTRAINT [FK_Star_User]
+GO
+
+
+
+
+
+/****** Object:  Table [dbo].[User]    Script Date: 8/23/2020 1:00:36 PM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[User](
+	[IdUser] [numeric](14, 0) IDENTITY(1,1) NOT NULL,
+	[Username] [varchar](30) NOT NULL,
+	[Password] [varchar](10) NOT NULL,
+	[Email] [varchar](50) NULL,
+ CONSTRAINT [PK_User] PRIMARY KEY CLUSTERED 
+(
+	[IdUser] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY],
+ CONSTRAINT [UX_User_Email] UNIQUE NONCLUSTERED 
+(
+	[Email] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY],
+ CONSTRAINT [UX_User_Username] UNIQUE NONCLUSTERED 
+(
+	[Username] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Unique Key constraint for Email column' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'User', @level2type=N'CONSTRAINT',@level2name=N'UX_User_Email'
+GO
+
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Unique Key constraint for Username column.' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'User', @level2type=N'CONSTRAINT',@level2name=N'UX_User_Username'
+GO
+
+
+
+
+
+/****** Object:  Table [dbo].[Tag]    Script Date: 8/23/2020 12:59:41 PM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[Tag](
+	[IdTag] [numeric](14, 0) NOT NULL,
+	[Name] [varchar](30) NOT NULL,
+ CONSTRAINT [PK_Tag] PRIMARY KEY CLUSTERED 
+(
+	[IdTag] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY],
+ CONSTRAINT [UX_Tag_Name] UNIQUE NONCLUSTERED 
+(
+	[Name] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+
+
+
+
+/****** Object:  Table [dbo].[Tag_Star]    Script Date: 8/23/2020 1:00:20 PM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[Tag_Star](
+	[IdTag] [numeric](14, 0) NOT NULL,
+	[IdStar] [numeric](14, 0) NOT NULL,
+ CONSTRAINT [PK_Tag_Star_1] PRIMARY KEY CLUSTERED 
+(
+	[IdTag] ASC,
+	[IdStar] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY],
+ CONSTRAINT [PK_Tag_Star] UNIQUE NONCLUSTERED 
+(
+	[IdTag] ASC,
+	[IdStar] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+ALTER TABLE [dbo].[Tag_Star]  WITH CHECK ADD  CONSTRAINT [FK_Tag_Star_Star] FOREIGN KEY([IdStar])
+REFERENCES [dbo].[Star] ([IdStar])
+GO
+
+ALTER TABLE [dbo].[Tag_Star] CHECK CONSTRAINT [FK_Tag_Star_Star]
+GO
+
+ALTER TABLE [dbo].[Tag_Star]  WITH CHECK ADD  CONSTRAINT [FK_Tag_Star_Tag] FOREIGN KEY([IdTag])
+REFERENCES [dbo].[Tag] ([IdTag])
+GO
+
+ALTER TABLE [dbo].[Tag_Star] CHECK CONSTRAINT [FK_Tag_Star_Tag]
+GO
+
+

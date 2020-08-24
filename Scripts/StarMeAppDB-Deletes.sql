@@ -1,0 +1,2 @@
+DELETE FROM Star
+WHERE IdUser = 2;
