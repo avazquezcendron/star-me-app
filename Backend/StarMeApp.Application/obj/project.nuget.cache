@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "yqAK5/Zx3g9lyny3TG2iZff5K+QiiAahrtrFG7cnrgM1kd43hSLATdiOXrKaCXregdc6ni6Wmgf1j1vF6c1ezA==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Agustín\\source\\repos\\star-me-app\\Backend\\StarMeApp.Application\\StarMeApp.Application.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Agustín\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}

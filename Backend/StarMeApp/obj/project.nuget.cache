@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "9guqsVmgXqfqZDnnNRXry2BsNzkLlR2lCbjWUIjcKAvv8asNYs+5WmKzm+OiejjaJJQH8RFNteHQgmbBHeF6oA==",
+  "dgSpecHash": "1F7hwP6cgDD5IcNgs5MYhmH+1BhOA4fGpXXU46vDqBpVMW3uCfmp2LvybV8BQFA+sKnGA9Yxvvt7sGjFBc3ePg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Agustín\\source\\repos\\star-me-app\\Backend\\StarMeApp\\StarMeApp.csproj",
+  "projectFilePath": "C:\\Users\\Agustín\\source\\repos\\star-me-app\\Backend\\StarMeApp\\StarMeApp.WebApi.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

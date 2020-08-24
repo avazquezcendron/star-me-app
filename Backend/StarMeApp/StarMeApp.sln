@@ -3,7 +3,19 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30225.117
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StarMeApp", "StarMeApp.csproj", "{7CCA789B-77F9-41CA-A146-190722DE0CB4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StarMeApp.WebApi", "StarMeApp.WebApi.csproj", "{7CCA789B-77F9-41CA-A146-190722DE0CB4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{B96D06D2-B926-4288-9C23-DF04F1C96C80}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{18BF8C27-D882-4C49-9B9A-834AFE4C0A8F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WebApi", "WebApi", "{DF07CF03-ECBE-428E-89C9-0564A675072D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StarMeApp.Application", "..\StarMeApp.Application\StarMeApp.Application.csproj", "{84C29634-F940-45D0-9014-BC9FE88E9653}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StarMeApp.Domain", "..\StarMeApp.Domain\StarMeApp.Domain.csproj", "{C694EB0D-840B-4CC6-8FC4-A430A83BB171}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StarMeApp.Infrastructure.Persistence", "..\StarMeApp.Infrastructure.Persistence\StarMeApp.Infrastructure.Persistence.csproj", "{CDD8553B-AE9D-4D88-8ED8-DB2F06AF71A9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,9 +27,27 @@ Global
 		{7CCA789B-77F9-41CA-A146-190722DE0CB4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7CCA789B-77F9-41CA-A146-190722DE0CB4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7CCA789B-77F9-41CA-A146-190722DE0CB4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{84C29634-F940-45D0-9014-BC9FE88E9653}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{84C29634-F940-45D0-9014-BC9FE88E9653}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{84C29634-F940-45D0-9014-BC9FE88E9653}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{84C29634-F940-45D0-9014-BC9FE88E9653}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C694EB0D-840B-4CC6-8FC4-A430A83BB171}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C694EB0D-840B-4CC6-8FC4-A430A83BB171}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C694EB0D-840B-4CC6-8FC4-A430A83BB171}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C694EB0D-840B-4CC6-8FC4-A430A83BB171}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CDD8553B-AE9D-4D88-8ED8-DB2F06AF71A9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CDD8553B-AE9D-4D88-8ED8-DB2F06AF71A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CDD8553B-AE9D-4D88-8ED8-DB2F06AF71A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CDD8553B-AE9D-4D88-8ED8-DB2F06AF71A9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{7CCA789B-77F9-41CA-A146-190722DE0CB4} = {DF07CF03-ECBE-428E-89C9-0564A675072D}
+		{84C29634-F940-45D0-9014-BC9FE88E9653} = {B96D06D2-B926-4288-9C23-DF04F1C96C80}
+		{C694EB0D-840B-4CC6-8FC4-A430A83BB171} = {B96D06D2-B926-4288-9C23-DF04F1C96C80}
+		{CDD8553B-AE9D-4D88-8ED8-DB2F06AF71A9} = {18BF8C27-D882-4C49-9B9A-834AFE4C0A8F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {CAC9A819-D403-4EB2-81E1-36564390A6C9}

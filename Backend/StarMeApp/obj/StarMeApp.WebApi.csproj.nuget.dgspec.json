@@ -1,15 +1,15 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Agustín\\source\\repos\\star-me-app\\Backend\\StarMeApp\\StarMeApp.csproj": {}
+    "C:\\Users\\Agustín\\source\\repos\\star-me-app\\Backend\\StarMeApp\\StarMeApp.WebApi.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Agustín\\source\\repos\\star-me-app\\Backend\\StarMeApp\\StarMeApp.csproj": {
+    "C:\\Users\\Agustín\\source\\repos\\star-me-app\\Backend\\StarMeApp\\StarMeApp.WebApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Agustín\\source\\repos\\star-me-app\\Backend\\StarMeApp\\StarMeApp.csproj",
-        "projectName": "StarMeApp",
-        "projectPath": "C:\\Users\\Agustín\\source\\repos\\star-me-app\\Backend\\StarMeApp\\StarMeApp.csproj",
+        "projectUniqueName": "C:\\Users\\Agustín\\source\\repos\\star-me-app\\Backend\\StarMeApp\\StarMeApp.WebApi.csproj",
+        "projectName": "StarMeApp.WebApi",
+        "projectPath": "C:\\Users\\Agustín\\source\\repos\\star-me-app\\Backend\\StarMeApp\\StarMeApp.WebApi.csproj",
         "packagesPath": "C:\\Users\\Agustín\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\Agustín\\source\\repos\\star-me-app\\Backend\\StarMeApp\\obj\\",
         "projectStyle": "PackageReference",
