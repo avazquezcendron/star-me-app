@@ -5,8 +5,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Models\" />
     <Folder Include="Services\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\StarMeApp.Application\StarMeApp.Application.csproj" />
+    <ProjectReference Include="..\StarMeApp.Infrastructure.Persistence\StarMeApp.Infrastructure.Persistence.csproj" />
   </ItemGroup>
 
 

@@ -1,0 +1,14 @@
+C:\Users\Agustín\source\repos\star-me-app\Backend\StarMeApp.Infrastructure.Persistence\bin\Debug\netstandard2.0\StarMeApp.Application.dll
+C:\Users\Agustín\source\repos\star-me-app\Backend\StarMeApp.Infrastructure.Persistence\bin\Debug\netstandard2.0\StarMeApp.Domain.dll
+C:\Users\Agustín\source\repos\star-me-app\Backend\StarMeApp.Infrastructure.Persistence\obj\Debug\netstandard2.0\StarMeApp.Infrastructure.Persistence.csprojAssemblyReference.cache
+C:\Users\Agustín\source\repos\star-me-app\Backend\StarMeApp.Infrastructure.Persistence\obj\Debug\netstandard2.0\StarMeApp.Infrastructure.Persistence.AssemblyInfoInputs.cache
+C:\Users\Agustín\source\repos\star-me-app\Backend\StarMeApp.Infrastructure.Persistence\obj\Debug\netstandard2.0\StarMeApp.Infrastructure.Persistence.AssemblyInfo.cs
+C:\Users\Agustín\source\repos\star-me-app\Backend\StarMeApp.Infrastructure.Persistence\bin\Debug\netstandard2.0\StarMeApp.Infrastructure.Persistence.deps.json
+C:\Users\Agustín\source\repos\star-me-app\Backend\StarMeApp.Infrastructure.Persistence\bin\Debug\netstandard2.0\StarMeApp.Infrastructure.Persistence.dll
+C:\Users\Agustín\source\repos\star-me-app\Backend\StarMeApp.Infrastructure.Persistence\bin\Debug\netstandard2.0\StarMeApp.Infrastructure.Persistence.pdb
+C:\Users\Agustín\source\repos\star-me-app\Backend\StarMeApp.Infrastructure.Persistence\bin\Debug\netstandard2.0\StarMeApp.Application.pdb
+C:\Users\Agustín\source\repos\star-me-app\Backend\StarMeApp.Infrastructure.Persistence\bin\Debug\netstandard2.0\StarMeApp.Domain.pdb
+C:\Users\Agustín\source\repos\star-me-app\Backend\StarMeApp.Infrastructure.Persistence\obj\Debug\netstandard2.0\StarMeApp.Infrastructure.Persistence.csproj.CopyComplete
+C:\Users\Agustín\source\repos\star-me-app\Backend\StarMeApp.Infrastructure.Persistence\obj\Debug\netstandard2.0\StarMeApp.Infrastructure.Persistence.dll
+C:\Users\Agustín\source\repos\star-me-app\Backend\StarMeApp.Infrastructure.Persistence\obj\Debug\netstandard2.0\StarMeApp.Infrastructure.Persistence.pdb
+C:\Users\Agustín\source\repos\star-me-app\Backend\StarMeApp.Infrastructure.Persistence\obj\Debug\netstandard2.0\StarMeApp.Infrastructure.Persistence.csproj.CoreCompileInputs.cache

@@ -1,0 +1,9 @@
+C:\Users\Agustín\source\repos\star-me-app\Backend\StarMeApp.Domain\bin\Debug\netstandard2.0\StarMeApp.Domain.deps.json
+C:\Users\Agustín\source\repos\star-me-app\Backend\StarMeApp.Domain\bin\Debug\netstandard2.0\StarMeApp.Domain.dll
+C:\Users\Agustín\source\repos\star-me-app\Backend\StarMeApp.Domain\bin\Debug\netstandard2.0\StarMeApp.Domain.pdb
+C:\Users\Agustín\source\repos\star-me-app\Backend\StarMeApp.Domain\obj\Debug\netstandard2.0\StarMeApp.Domain.csprojAssemblyReference.cache
+C:\Users\Agustín\source\repos\star-me-app\Backend\StarMeApp.Domain\obj\Debug\netstandard2.0\StarMeApp.Domain.AssemblyInfoInputs.cache
+C:\Users\Agustín\source\repos\star-me-app\Backend\StarMeApp.Domain\obj\Debug\netstandard2.0\StarMeApp.Domain.AssemblyInfo.cs
+C:\Users\Agustín\source\repos\star-me-app\Backend\StarMeApp.Domain\obj\Debug\netstandard2.0\StarMeApp.Domain.csproj.CoreCompileInputs.cache
+C:\Users\Agustín\source\repos\star-me-app\Backend\StarMeApp.Domain\obj\Debug\netstandard2.0\StarMeApp.Domain.dll
+C:\Users\Agustín\source\repos\star-me-app\Backend\StarMeApp.Domain\obj\Debug\netstandard2.0\StarMeApp.Domain.pdb

@@ -10,6 +10,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using StarMeApp.Application;
+using StarMeApp.Infrastructure.Persistence;
 
 namespace StarMeApp
 {
@@ -25,7 +27,11 @@ namespace StarMeApp
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddApplicationLayer();
+            services.AddPersistenceInfrastructure(Configuration);
+            //services.AddSwaggerExtension();
             services.AddControllers();
+            services.AddHealthChecks();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

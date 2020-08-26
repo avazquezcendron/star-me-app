@@ -2,7 +2,7 @@
 
 namespace StarMeApp.Domain.BusinessEntities
 {
-    public class Tag : AuditableBusinessEntity
+    public class Tag : AbstractBusinessEntity<long>
     {
         public Tag()
         {

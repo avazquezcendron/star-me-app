@@ -2,7 +2,7 @@
 
 namespace StarMeApp.Domain.BusinessEntities
 {
-    public class User : AuditableBusinessEntity
+    public class User : AbstractBusinessEntity<long>
     {
         public User()
         {
