@@ -4,4 +4,11 @@
 
 /.vs
 /Backend/StarMeApp/.vs/StarMeApp
-/Backend/StarMeApp/bin/Debug/netcoreapp3.1
+/Backend/StarMeApp/bin
+/Backend/StarMeApp/obj
+/Backend/StarMeApp.Aplication/bin
+/Backend/StarMeApp.Aplication/obj
+/Backend/StarMeApp.Domain/bin
+/Backend/StarMeApp.Domain/obj
+/Backend/StarMeApp.Infrastructure.Persistence/bin
+/Backend/StarMeApp.Infrastructure.Persistence/obj
