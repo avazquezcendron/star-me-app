@@ -48,7 +48,7 @@ namespace StarMeApp.Infrastructure.Persistence.Services
             entity.ClearTags();
             foreach (var tagDto in dto.Tags)
             {
-                var tag = await this._tagRepositoryAsync.GetByIdAsync(this._mapper.Map<long>(tagDto.Id));// TODO: this shouldn't be here!
+                var tag = await this._tagRepositoryAsync.GetByIdAsync(this._mapper.Map<long>(tagDto.Id));// TODO: refactor this: move to a more general method that allows get any related entity.
                 if (tag == null)
                 {
                     tag = this._mapper.Map<Tag>(tagDto);

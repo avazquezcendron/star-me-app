@@ -33,12 +33,6 @@ namespace StarMeApp.Infrastructure.Persistence.Repositories
         public override async Task UpdateAsync(Story entity)
         {
             _dbContext.Entry(entity).State = EntityState.Modified;
-            //foreach (var st in entity.Tags)
-            //{
-            //    if(!_stories.Any(x => x.Tags.Any(t => t.TagId == st.TagId))) //TODO: check this.
-            //        _dbContext.Entry(st).State = EntityState.Added;
-            //}
-            
             await _dbContext.SaveChangesAsync();
         }
 
