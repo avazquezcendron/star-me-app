@@ -1,8 +1,12 @@
 ﻿
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Internal;
 using StarMeApp.Application.Repositories;
 using StarMeApp.Domain.BusinessEntities;
 using StarMeApp.Infrastructure.Persistence.Contexts;
+using System.Collections.Generic;
+using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
 
 namespace StarMeApp.Infrastructure.Persistence.Repositories
@@ -14,6 +18,28 @@ namespace StarMeApp.Infrastructure.Persistence.Repositories
         public StoryRepositoryAsync(ApplicationDbContext dbContext) : base(dbContext)
         {
             _stories = dbContext.Set<Story>();
+        }
+
+        public override async Task<IEnumerable<Story>> GetAllAsync()
+        {
+            return await _stories.Include(s => s.Tags).ThenInclude(t => t.Tag).ToListAsync();
+        }
+
+        public override async Task<Story> GetByIdAsync(long id)
+        {
+            return await _stories.Include(s => s.Tags).ThenInclude(t => t.Tag).FirstOrDefaultAsync(x => x.Id == id);
+        }
+
+        public override async Task UpdateAsync(Story entity)
+        {
+            _dbContext.Entry(entity).State = EntityState.Modified;
+            //foreach (var st in entity.Tags)
+            //{
+            //    if(!_stories.Any(x => x.Tags.Any(t => t.TagId == st.TagId))) //TODO: check this.
+            //        _dbContext.Entry(st).State = EntityState.Added;
+            //}
+            
+            await _dbContext.SaveChangesAsync();
         }
 
         public Task<bool> IsUniqueTitleAsync(string title)

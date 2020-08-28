@@ -3,13 +3,15 @@ using System.Threading.Tasks;
 
 namespace StarMeApp.Application.Contracts.Services
 {
-    public interface IGenericService<TDto, TIdTDto> where TDto : IDTO<TIdTDto>
+    public interface IGenericService<TAddDto, TGetDto, TIdTDto>
+        where TAddDto : IAddDTO<TIdTDto>
+        where TGetDto : IGetDTO<TIdTDto>
     {
-        Task<ResponseValueDTO<TDto>> GetByIdAsync(TIdTDto id);
-        Task<ResponseListDTO<TDto>> GetAllAsync();
-        Task<PagedResponseDTO<TDto>> GetPagedReponseAsync(int pageNumber, int pageSize);
-        Task<ResponseValueDTO<TIdTDto>> AddAsync(TDto entity);
-        Task UpdateAsync(TDto entity);
+        Task<ResponseValueDTO<TGetDto>> GetByIdAsync(TIdTDto id);
+        Task<ResponseListDTO<TGetDto>> GetAllAsync();
+        Task<PagedResponseDTO<TGetDto>> GetPagedReponseAsync(int pageNumber, int pageSize);
+        Task<ResponseValueDTO<TIdTDto>> AddAsync(TAddDto entity);
+        Task UpdateAsync(TAddDto entity);
         Task DeleteAsync(TIdTDto id);
     }
 }

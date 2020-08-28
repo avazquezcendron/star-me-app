@@ -9,6 +9,13 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.7">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\StarMeApp.Application\StarMeApp.Application.csproj" />
     <ProjectReference Include="..\StarMeApp.Infrastructure.Persistence\StarMeApp.Infrastructure.Persistence.csproj" />
   </ItemGroup>

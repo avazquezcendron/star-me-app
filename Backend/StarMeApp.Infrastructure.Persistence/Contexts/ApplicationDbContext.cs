@@ -1,8 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using StarMeApp.Domain.BusinessEntities;
 using StarMeApp.Domain.Common;
+using StarMeApp.Infrastructure.Persistence.ModelConfigurations;
 using System;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -14,11 +16,12 @@ namespace StarMeApp.Infrastructure.Persistence.Contexts
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
-            ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.NoTracking;
+            ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.TrackAll;
         }
         public DbSet<Story> Stories { get; set; }
         public DbSet<Tag> Tags { get; set; }
         public DbSet<User> Users { get; set; }
+        //public DbSet<StoryTags> StoryTags { get; set; }
 
         public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = new CancellationToken())
         {
@@ -31,7 +34,7 @@ namespace StarMeApp.Infrastructure.Persistence.Contexts
                         {
                             CreatedAt = DateTime.UtcNow,
                             State = "I"
-                        };                    
+                        };
                         break;
                     case EntityState.Modified:
                         var prevCreatedAt = entry.Entity.AuditInfo.CreatedAt;
@@ -44,7 +47,7 @@ namespace StarMeApp.Infrastructure.Persistence.Contexts
                         //entry.Entity.User = _authenticatedUser.UserId;
                         break;
                     case EntityState.Deleted:
-                        var _prevCreatedAt = entry.Entity.AuditInfo.CreatedAt;                        
+                        var _prevCreatedAt = entry.Entity.AuditInfo.CreatedAt;
                         entry.Entity.AuditInfo = new AuditInfoStruct()
                         {
                             UpdatedAt = DateTime.UtcNow,
@@ -57,16 +60,14 @@ namespace StarMeApp.Infrastructure.Persistence.Contexts
             }
             return base.SaveChangesAsync(cancellationToken);
         }
-        //protected override void OnModelCreating(ModelBuilder builder)
-        //{
-        //    //All Decimals will have 18,6 Range
-        //    foreach (var property in builder.Model.GetEntityTypes()
-        //    .SelectMany(t => t.GetProperties())
-        //    .Where(p => p.ClrType == typeof(decimal) || p.ClrType == typeof(decimal?)))
-        //    {
-        //        property.("decimal(18,6)");
-        //    }
-        //    base.OnModelCreating(builder);
-        //}
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            builder.ApplyConfiguration(new StoryConfiguration());
+            builder.ApplyConfiguration(new TagConfiguration());
+            builder.ApplyConfiguration(new StoryTagsConfiguration());
+            builder.ApplyConfiguration(new UserConfiguration());
+
+            base.OnModelCreating(builder);
+        }
     }
 }

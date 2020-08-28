@@ -12,6 +12,14 @@ namespace StarMeApp.Application.Contracts.DTOs.Common
         TIdTDto Id { get; set; }
     }
 
+    public interface IGetDTO<TIdTDto> : IDTO<TIdTDto>
+    {
+    }
+
+    public interface IAddDTO<TIdTDto> : IDTO<TIdTDto>
+    {
+    }
+
     public class AuditInfoStructDTO
     {
 

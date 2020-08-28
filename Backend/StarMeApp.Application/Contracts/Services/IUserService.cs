@@ -2,7 +2,7 @@
 
 namespace StarMeApp.Application.Contracts.Services
 {
-    public interface IUserService: IGenericService<UserDTO, long>
+    public interface IUserService: IGenericService<AddUserDTO, GetUserDTO, long>
     {
 
     }

@@ -2,7 +2,7 @@
 
 namespace StarMeApp.Application.Contracts.Services
 {
-    public interface ITagService : IGenericService<TagDTO, long>
+    public interface ITagService : IGenericService<AddTagDTO, GetTagDTO, long>
     {
 
     }

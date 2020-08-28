@@ -25,7 +25,7 @@ namespace StarMeApp.Infrastructure.Persistence
             {
                 services.AddDbContext<ApplicationDbContext>(options =>
                options.UseSqlServer(
-                   configuration.GetConnectionString("DefaultConnection"),
+                   configuration.GetConnectionString("Default"),
                    b => b.MigrationsAssembly(typeof(ApplicationDbContext).Assembly.FullName)));
             }
 
@@ -39,7 +39,7 @@ namespace StarMeApp.Infrastructure.Persistence
             #region Services
             services.AddAutoMapper(typeof(Profiles));
             //Mapper.AssertConfigurationIsValid();
-            services.AddTransient<IStoryService>(provider => new StoryService(provider.GetService<IMapper>(), provider.GetService<IStoryRepositoryAsync>()));
+            services.AddTransient<IStoryService>(provider => new StoryService(provider.GetService<IMapper>(), provider.GetService<IStoryRepositoryAsync>(), provider.GetService<ITagRepositoryAsync>()));
             services.AddTransient<ITagService>(provider => new TagService(provider.GetService<IMapper>(), provider.GetService<ITagRepositoryAsync>()));
             services.AddTransient<IUserService>(provider => new UserService(provider.GetService<IMapper>(), provider.GetService<IUserRepositoryAsync>()));
 

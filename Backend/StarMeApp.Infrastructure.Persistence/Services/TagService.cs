@@ -6,7 +6,7 @@ using StarMeApp.Domain.BusinessEntities;
 
 namespace StarMeApp.Infrastructure.Persistence.Services
 {
-    public class TagService : GenericService<TagDTO, Tag, long, long>, ITagService
+    public class TagService : GenericService<AddTagDTO, GetTagDTO, Tag, long, long>, ITagService
     {
 
         public TagService(IMapper mapper, ITagRepositoryAsync tagRepository): base (mapper, tagRepository)

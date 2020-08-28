@@ -1,6 +1,11 @@
 ﻿namespace StarMeApp.Domain.Common
 {
-    public interface IBusinessEntity<TId>
+    public interface IBusinessEntity
+    {
+
+    }
+
+    public interface IBusinessEntity<TId>: IBusinessEntity
     {
         TId Id { get; set; }
     }

@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using AutoMapper;
+﻿using AutoMapper;
 using StarMeApp.Application.Contracts.DTOs;
 using StarMeApp.Application.Contracts.DTOs.Common;
 using StarMeApp.Domain.BusinessEntities;
@@ -13,10 +10,15 @@ namespace StarMeApp.Application.Mappings
     {
         public Profiles()
         {
-            CreateMap<Story, StoryDTO>().ReverseMap();
-            CreateMap<Tag, TagDTO>().ReverseMap();
-            CreateMap<User, UserDTO>().ReverseMap();
+            CreateMap<AddStoryDTO, Story>().ForMember(dest => dest.Tags, opt => opt.Ignore());
+            CreateMap<Story, GetStoryDTO>().ForMember(dest => dest.Tags, opt => opt.Ignore());
+            CreateMap<AddTagDTO, Tag>();
+            CreateMap<Tag, GetTagDTO>();
+            CreateMap<AddUserDTO, User>();
+            CreateMap<User, GetUserDTO>();
+
             CreateMap<AuditInfoStruct, AuditInfoStructDTO>().ReverseMap();
         }
     }
+
 }

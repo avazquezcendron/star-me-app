@@ -7,7 +7,7 @@ namespace StarMeApp.Domain.Common
         AuditInfoStruct AuditInfo { get; set; }
     }
 
-    public struct AuditInfoStruct
+    public class AuditInfoStruct
     {      
         public DateTime CreatedAt { get; set; }
         

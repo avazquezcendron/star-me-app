@@ -6,7 +6,7 @@ using StarMeApp.Domain.BusinessEntities;
 
 namespace StarMeApp.Infrastructure.Persistence.Services
 {
-    public class UserService : GenericService<UserDTO, User, long, long>, IUserService
+    public class UserService : GenericService<AddUserDTO, GetUserDTO, User, long, long>, IUserService
     {
 
         public UserService(IMapper mapper, IUserRepositoryAsync userRepository): base (mapper, userRepository)

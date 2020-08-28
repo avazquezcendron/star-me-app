@@ -2,9 +2,21 @@
 
 namespace StarMeApp.Application.Contracts.DTOs
 {
-    public class TagDTO : IDTO<long>
+    public interface ITagDTO : IDTO<long>
+    {
+    }
+
+    public abstract class TagDTO: ITagDTO
     {
         public long Id { get; set; }
         public string Name { get; set; }
+    }
+
+    public class GetTagDTO : TagDTO, IGetDTO<long>
+    {
+    }
+
+    public class AddTagDTO : TagDTO, IAddDTO<long>
+    {
     }
 }
