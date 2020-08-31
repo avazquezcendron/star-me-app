@@ -30,12 +30,6 @@ namespace StarMeApp.Infrastructure.Persistence.Repositories
             return await _stories.Include(s => s.Tags).ThenInclude(t => t.Tag).FirstOrDefaultAsync(x => x.Id == id);
         }
 
-        public override async Task UpdateAsync(Story entity)
-        {
-            _dbContext.Entry(entity).State = EntityState.Modified;
-            await _dbContext.SaveChangesAsync();
-        }
-
         public Task<bool> IsUniqueTitleAsync(string title)
         {
             return _stories

@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.ComponentModel.DataAnnotations;
+using System.Runtime.Serialization;
 
 namespace StarMeApp.Application.Contracts.DTOs.Common
 {
@@ -9,6 +11,8 @@ namespace StarMeApp.Application.Contracts.DTOs.Common
     }
     public interface IDTO<TIdTDto> : IDTO
     {
+        [Required]
+        [DataMember]
         TIdTDto Id { get; set; }
     }
 
@@ -32,9 +36,13 @@ namespace StarMeApp.Application.Contracts.DTOs.Common
             this.CreatedAt = createdAt;
             this.UpdatedAt = updatedAt;
         }
+        [DataMember]
         public DateTime CreatedAt { get; set; }
+        [DataMember]
         public string State { get; set; }
+        [DataMember]
         public DateTime? UpdatedAt { get; set; }
+        [DataMember]
         public string User { get; set; }
     }
 
@@ -49,14 +57,29 @@ namespace StarMeApp.Application.Contracts.DTOs.Common
         {
             this.Messages = new List<ResponseMessage>();
         }
+
+        public ResponseDTO(ResponseMessage msg) : this()
+        {
+            this.Messages.Add(msg);
+        }
         public bool Succeeded
         {
             get
             {
-                return !this.Messages.Any(x => x.Kind == (MessageKind.Error | MessageKind.Fatal));
+                return !this.Messages.Any(x => x.GetMessageKind() == (MessageKind.Error | MessageKind.Fatal));
             }
         }
-        public IEnumerable<ResponseMessage> Messages { get; set; }
+        public ICollection<ResponseMessage> Messages { get; set; }
+
+        public void AddMessage(MessageKind kind, string message)
+        {
+            this.Messages.Add(new ResponseMessage(message, kind));
+        }
+
+        public void ClearMessages()
+        {
+            this.Messages.Clear();
+        }
     }
 
     public class ResponseValueDTO<TValue> : ResponseDTO
@@ -64,6 +87,7 @@ namespace StarMeApp.Application.Contracts.DTOs.Common
         public ResponseValueDTO() : base()
         {
         }
+        [DataMember]
         public TValue Response { get; set; }
     }
 
@@ -71,14 +95,17 @@ namespace StarMeApp.Application.Contracts.DTOs.Common
     {
         public ResponseListDTO() : base()
         { }
-
+        [DataMember]
         public IEnumerable<TValue> Response { get; set; }
+        [DataMember]
         public int TotalListCount { get; set; }
     }
 
     public class PagedResponseDTO<IDTO> : ResponseListDTO<IDTO>
     {
+        [DataMember]
         public int PageNumber { get; set; }
+        [DataMember]
         public int PageSize { get; set; }
 
         public PagedResponseDTO(int pageNumber, int pageSize) : base()

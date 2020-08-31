@@ -1,4 +1,6 @@
 ﻿using StarMeApp.Application.Contracts.DTOs.Common;
+using System.ComponentModel.DataAnnotations;
+using System.Runtime.Serialization;
 
 namespace StarMeApp.Application.Contracts.DTOs
 {
@@ -8,7 +10,11 @@ namespace StarMeApp.Application.Contracts.DTOs
 
     public abstract class TagDTO: ITagDTO
     {
+        [DataMember]
+        [Required]
         public long Id { get; set; }
+        [DataMember]
+        [Required]
         public string Name { get; set; }
     }
 

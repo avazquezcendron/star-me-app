@@ -59,10 +59,5 @@ namespace StarMeApp.Infrastructure.Persistence.Repositories
                  .Set<T>()
                  .ToListAsync();
         }
-
-        public virtual void SeEntityUnchanged(T entity)
-        {
-            this._dbContext.Entry(entity).State = EntityState.Unchanged;
-        }
     }
 }

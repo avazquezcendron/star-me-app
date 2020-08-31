@@ -36,6 +36,18 @@ namespace StarMeApp.Infrastructure.Persistence.Services
             return dto;
         }
 
+        protected override AddStoryDTO MapDTOForPatch(Story be)
+        {
+            var dto = base.MapDTOForPatch(be);
+            var tags = new List<AddTagDTO>();
+            foreach (var tag in be.Tags)
+            {
+                tags.Add(new AddTagDTO() { Id = tag.TagId, Name = tag.Tag.Name });
+            }
+            dto.Tags = tags;
+            return dto;
+        }
+
         protected override async Task<Story> MapEntity(AddStoryDTO dto, Story be)
         {
             var entity = await base.MapEntity(dto, be);            
