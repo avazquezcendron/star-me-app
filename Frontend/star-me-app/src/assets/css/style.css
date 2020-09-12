@@ -1,0 +1,399 @@
+html,
+body {
+  height: 100%;
+}
+h1 {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+p {
+  font-family: "Radley", serif;
+}
+a:hover {
+  text-decoration: none;
+}
+
+input {
+  border: 0px;
+  outline: none;
+  border-bottom: #e3e3e3 solid 1px;
+}
+
+textarea {
+  border: 0px;
+  outline: none;
+  border-bottom: #e3e3e3 solid 1px;
+}
+
+input:focus, textarea:focus, select:focus{
+  outline: none;
+}
+
+.row {
+  margin-left: 0px;
+  margin-right: 0px;
+}
+.header {
+  width: 60%;
+  margin: 0 auto;
+}
+.header a {
+  color: #333;
+}
+.header a:hover {
+  /* border-bottom: #e3e3e3 solid 1px; */
+  text-decoration: none;
+  color: #e3e3e3;
+}
+
+/* .header input {
+  border-bottom: #e3e3e3 solid 1px;
+} */
+
+.header-block {
+  border-bottom: #e3e3e3 solid 1px;
+}
+
+.blog-title {
+  font-family: "Montserrat", sans-serif;
+}
+.blog-title h1 {
+  text-align: center;
+  font-size: 80px;
+  margin-top: 26px;
+  margin-bottom: 0px;
+  font-weight: 700;
+}
+
+.blog-title small {
+  font-style: italic;
+}
+
+.square {
+  text-align: right;
+  margin-top: 18px;
+  font-size: 30px;
+}
+
+.hero-description h1 {
+  font-size: 46px;
+}
+.post-list {
+  width: 60%;
+  margin: 0 auto;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  font-family: "Radley", serif;
+}
+.post-list a {
+  color: #000;
+  padding-bottom: 3px;
+}
+.post-list a:hover {
+  border-bottom: #8c8c8c solid 2px;
+  text-decoration: none;
+  color: #8c8c8c;
+}
+.post-content {
+  width: 60%;
+  margin: 0 auto;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 40px;
+  padding-bottom: 20px;
+  font-family: "Radley", serif;
+}
+.post-content h1 {
+  font-family: "Montserrat", sans-serif;
+  margin-bottom: 5px;
+}
+.post-content {
+  font-size: 18px;
+  line-height: 2rem;
+}
+.post-content a {
+  /* border-bottom: #000 solid 1px */
+}
+/* .post-data img{
+	min-width:auto;
+  display: block;
+  margin: auto;
+	max-width: 100%;
+} */
+.post-meta-data {
+  color: #767676;
+}
+
+.post-footer {
+}
+
+.post-footer a {
+  color: #000;
+  padding-bottom: 3px;
+  border-bottom: #000 solid 1px;
+}
+.post-footer a:hover {
+  border-bottom: #8c8c8c solid 2px;
+  text-decoration: none;
+  color: #8c8c8c;
+}
+
+.author-img {
+  width: 45px;
+  height: 45px;
+}
+
+.footer a {
+  color: #000;
+}
+.footer a:active {
+  border-bottom: #000 solid 1px;
+}
+.footer a:hover {
+  border-bottom: #e3e3e3 solid 1px;
+  text-decoration: none;
+  color: #e3e3e3;
+}
+
+.navibar a {
+  color: #000;
+}
+.navibar a:active {
+  border-bottom: #000 solid 1px;
+}
+.navibar a:hover {
+  border-bottom: #e3e3e3 solid 1px;
+  text-decoration: none;
+  color: #e3e3e3;
+}
+
+.post-line {
+  margin-top: 15px;
+  margin-bottom: 12px;
+  text-align: center;
+}
+
+.post-titles h1 {
+  font-size: 30px;
+  display: inline;
+  line-height: 4rem;
+}
+.post-page-title {
+  line-height: 4.5rem;
+  text-align: center;
+}
+.post-meta-data {
+  font-size: 20px;
+  margin-bottom: 30px;
+  text-align: center;
+}
+.dates {
+  color: #767676;
+  font-size: 18px;
+  font-family: "Radley", serif;
+  font-style: italic;
+}
+.slag-page {
+  text-align: center;
+  margin-bottom: 20px;
+}
+.moreit {
+  font-family: "Montserrat", sans-serif;
+}
+.author-box {
+  text-align: center;
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+.author-box img {
+  width: 50px;
+  border-radius: 50px;
+}
+.error-page {
+  font-size: 80px;
+  text-align: center;
+}
+.righted {
+  text-align: right;
+}
+.paddd {
+  padding-left: 0px;
+  padding-right: 0px;
+}
+.pagination-wrapper {
+  text-align: center;
+  font-size: 18px;
+  margin-bottom: 7rem;
+}
+.pagination {
+  margin: 5px 0;
+}
+.pagination-wrapper a {
+  color: #000;
+}
+.pagination-wrapper a:hover {
+  color: #767676;
+  border-bottom: none;
+}
+
+.footer {
+  width: 60%;
+  margin: 0 auto;
+  border-top: #e3e3e3 solid 1px;
+  font-family: "Radley", serif;
+  text-align: center;
+  font-size: 16px;
+}
+.footer h3 {
+  font-family: "Montserrat", sans-serif;
+
+  font-weight: 700;
+  padding-bottom: 10px;
+  text-transform: uppercase;
+  font-size: 20px;
+}
+.footer-inner {
+  width: 100%;
+  margin: 0 auto;
+  padding-top: 30px;
+  padding-bottom: 20px;
+  line-height: 3rem;
+}
+.footer-inner .col-md-4 {
+  height: 100%;
+}
+.footer-inner .mid {
+  padding-bottom: 20px;
+  border-right: #e3e3e3 solid 1px;
+  border-left: #e3e3e3 solid 1px;
+}
+.navibar {
+  width: 100%;
+  margin: 0 auto;
+  font-family: "Radley", serif;
+  text-align: center;
+  font-size: 16px;
+}
+.navibar-inner {
+  width: 100%;
+  margin: 0 auto;
+  padding-bottom: 30px;
+  line-height: 3rem;
+}
+.description {
+  display: block;
+  margin: 0 auto;
+  width: 50%;
+  padding-bottom: 10px;
+}
+.copyright {
+  width: 60%;
+  margin: 0 auto;
+  text-align: center;
+  padding-bottom: 20px;
+  font-family: "Radley", serif;
+  font-size: 16px;
+}
+
+.post-edit .title-edit {
+  font-size: 30px;
+}
+
+@media only screen and (max-width: 900px) {
+  .header-block,
+  .post-list,
+  .footer,
+  .copyright {
+    width: 80%;
+  }
+}
+
+:root {
+  --animate-duration: 1s;
+  --animate-delay: 1s;
+  --animate-repeat: 1;
+}
+.animated {
+  animation-duration: var(--animate-duration);
+  animation-fill-mode: both;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.fadeIn {
+  animation-name: fadeIn;
+}
+
+.divider {
+  width: 3.125rem !important;
+  height: 0.25rem;
+  border-radius: 0.25rem !important;
+  margin-top: 1.5rem;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 1.5rem;
+  background-color: #e3e3e3;
+}
+.divider.divider-sm {
+  height: 0.125rem;
+}
+.divider.divider-lg {
+  height: 0.5rem;
+}
+
+.tag {
+  display: inline-block;
+  --bg-opacity: 1;
+  background-color: #edeff0;
+  background-color: rgba(237, 239, 240, var(--bg-opacity));
+  border-radius: 0.25rem;
+  padding: 0.5rem;
+  margin-top: 10px;
+  margin-left: 0.25rem;
+  margin-right: 0.25rem;
+}
+.tag:not(:first-child):not(:last-child) {
+  margin-left: 0.25rem;
+  margin-right: 0.25rem;
+}
+
+.tag a {
+  color: inherit;
+  text-decoration: inherit;
+  cursor: pointer;
+}
+
+.tag-info {
+  display: inline-block;
+  --bg-opacity: 1;
+  /* background-color:#337ab7; */
+  background-color: rgb(51, 122, 183, var(--bg-opacity));
+  color: white;
+  border-radius: 0.25rem;
+  padding: 0.5rem;
+  margin-top: 10px;
+  margin-left: 0.25rem;
+  margin-right: 0.25rem;
+}
+
+.tag-info a {
+  color: inherit;
+  text-decoration: inherit;
+  cursor: pointer;
+}
+
+.mb-lg {
+  margin-bottom: 25px;
+}
+
+.ml-md {
+  margin-left: 15px;
+}

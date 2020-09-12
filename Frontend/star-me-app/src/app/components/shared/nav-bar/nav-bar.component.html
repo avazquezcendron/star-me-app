@@ -1,0 +1,16 @@
+<header class="header">
+  <div class="header-block row">
+    <div class="blog-title text-center">
+      <h1><a href [routerLink]="['/']">YaB.</a></h1>
+      <small>Yet another Blog (-.-)</small>
+
+    </div>
+  </div>
+
+  <span class="pull-right" *ngIf="globalStateMode === 'browse'">
+    <a class="btn btn-sm bt-primary" [routerLink]="['/story']">New Story</a> |
+    <span role="button" class="fa fa-search ml-md"> </span>
+    <input type="text" placeholder="Search story..." (keydown)="applySearch($event)" [(ngModel)]="searchTerm"/>
+  </span>
+
+</header>

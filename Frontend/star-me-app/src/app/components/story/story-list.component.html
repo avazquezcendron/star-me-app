@@ -1,0 +1,16 @@
+<div class="col-xs-12 col-sm-12 col-lg-12 post-line" *ngFor="let story of this.stories">
+  <span class="post-titles">
+    <a [routerLink]="['/stories', story.id]">
+      <h1>{{story.title}}.</h1>
+      <p>{{story.summary}}...</p>
+    </a>
+  </span>
+  <time class="dates">{{story.auditInfo.createdAt | date: 'MMM d, y, h:mm a'}}</time>
+  <div class="divider"></div>
+</div>
+
+<div class="pagination-wrapper" *ngIf="changePageVisible()">
+  <nav class="pagination" role="pagination">
+    <a class="older-posts" role="button" (click)="changePage()" > <span class="glyphicon glyphicon-menu-down" ></span> </a>
+  </nav>
+</div>

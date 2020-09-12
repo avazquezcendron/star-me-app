@@ -1,0 +1,88 @@
+<section class="post-content" *ngIf="dataLoaded">
+  <div class="post-data" >
+    <!-- <img src="" /> -->
+    <h1 class="post-page-title">{{story.title}}</h1>
+
+    <p class="post-meta-data">{{story.auditInfo.createdAt | date: 'MMM d, y, h:mm a'}}</p>
+    <div class="text-center">
+      <a class="btn btn-sm text-info fa fa-pencil" (click)="edit()" *ngIf="!editMode" title="Edit Story"></a>
+      <a class="btn btn-sm text-danger fa fa-trash" (click)="deleteStory()" *ngIf="!editMode" title="Delete Story"></a>
+      <a class="btn btn-sm text-success fa fa-save" (click)="saveStory()" *ngIf="editMode" title="Save Story"></a>
+      <a class="btn btn-sm text-danger fa fa-times" (click)="discardChanges()" *ngIf="editMode" title="Discard Changes"></a>
+    </div>
+    <!-- <app-tags  [tags]="story.tags" *ngIf="story.tags.length > 0 && !editMode"></app-tags> -->
+
+  </div>
+  <div class="divider"></div>
+  <div class="mb-lg">
+    <app-tags [tags]="story.tags"></app-tags>
+  </div>
+  <div *ngIf="editMode" class="post-edit post-data">
+
+    <form novalidate>
+      <div class="row mb-lg">
+        <app-add-tag-modal [inputTags]="story.tags" (onSelectedTags)="story.tags = $event"></app-add-tag-modal>
+      </div>
+      <div class="row mb-lg">
+        <div>
+          <!-- <small>Title</small> -->
+          <div class="title-edit ">
+            <input required class="col-md-12" type="text" [(ngModel)]="story.title"
+              style="padding-left: 0px;" name="title" maxlength="130" placeholder="Title..." />
+          </div>
+        </div>
+      </div>
+      <!-- <hr /> -->
+      <div class="row mb-lg">
+        <div>
+          <!-- <small>Summary</small> -->
+          <div>
+            <textarea required class="col-md-12" cols="32" rows="4" [(ngModel)]="story.summary"
+              style="resize:vertical;padding-left: 0px;" name="summary" maxlength="200" placeholder="Summary..."></textarea>
+          </div>
+        </div>
+        <!-- <div class="col-md-6 action-buttons">
+        <button class="btn btn-info btn-sm" (click)="showFullScreen(true)">
+          Full Screen Preview
+        </button>
+      </div> -->
+      </div>
+      <!-- <hr /> -->
+      <div class="row mb-lg">
+        <div>
+          <div class="editor">
+            <small>Content</small>
+            <div>
+              <angular-markdown-editor textareaId="editor1" [options]="editorOptions" rows="12"
+                [(ngModel)]="story.content" name="content" required>
+              </angular-markdown-editor>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+
+    <hr />
+    <h3 class="text-info bold">Preview</h3>
+  </div>
+
+
+
+  <markdown *ngIf="dataLoaded" [data]="story.content"></markdown>
+
+  <div class="author-box"><img src="assets/img/author-avatar-av.jpg" /></div>
+
+  <div class="row post-footer">
+    <div class="col-md-6 paddd">
+      <p><b>Prev</b>&nbsp;
+        <a href="#">Beautiful</a></p>
+    </div>
+    <div class="col-md-6 paddd righted">
+
+      <p>
+        <a href="#">Webpage</a>&nbsp;<b>Next</b></p>
+    </div>
+  </div>
+
+
+</section>

@@ -1,0 +1,12 @@
+<div *ngIf="this.DataLoaded" class="animated fadeIn">
+  <app-nav-bar></app-nav-bar>
+  <router-outlet></router-outlet>
+  <app-footer></app-footer>
+</div>
+<div *ngIf="!this.DataLoaded">
+Loading...
+</div>
+ <!--scroll to top-->
+ <div class="scroll-top">
+  <i class="fa fa-angle-up" aria-hidden="true"></i>
+</div>
