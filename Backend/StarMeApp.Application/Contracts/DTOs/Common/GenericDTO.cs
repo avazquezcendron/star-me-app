@@ -88,30 +88,39 @@ namespace StarMeApp.Application.Contracts.DTOs.Common
         {
         }
         [DataMember]
-        public TValue Response { get; set; }
+        public TValue Data { get; set; }
     }
 
     public class ResponseListDTO<TValue> : ResponseDTO
     {
+
         public ResponseListDTO() : base()
         { }
         [DataMember]
-        public IEnumerable<TValue> Response { get; set; }
+        public IEnumerable<TValue> Data { get; set; }
         [DataMember]
         public int TotalListCount { get; set; }
+        [DataMember]
+        public int? PageNumber { get; set; }
+        [DataMember]
+        public int? PageSize { get; set; }
     }
 
-    public class PagedResponseDTO<IDTO> : ResponseListDTO<IDTO>
+    public interface IRequestPaginationDTO
     {
         [DataMember]
-        public int PageNumber { get; set; }
+        int? PageNumber { get; set; }
         [DataMember]
-        public int PageSize { get; set; }
+        int? PageSize { get; set; }
 
-        public PagedResponseDTO(int pageNumber, int pageSize) : base()
-        {
-            this.PageNumber = pageNumber;
-            this.PageSize = pageSize;
-        }
+        [DataMember]
+        int? TotalSize { get; set; }
+    }
+
+    public class RequestPaginationDTO: IRequestPaginationDTO
+    {
+        public int? PageNumber { get; set; }
+        public int? PageSize { get; set; }
+        public int? TotalSize { get; set; }
     }
 }

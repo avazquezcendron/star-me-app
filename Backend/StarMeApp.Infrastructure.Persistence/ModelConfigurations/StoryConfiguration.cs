@@ -12,8 +12,8 @@ namespace StarMeApp.Infrastructure.Persistence.ModelConfigurations
             builder.HasKey(x => x.Id).IsClustered();            
 
             builder.Property(p => p.Title)
-                .HasColumnType("varchar(30)")
-                .HasMaxLength(30)
+                .HasColumnType("varchar(130)")
+                .HasMaxLength(130)
                 .IsRequired();
 
             builder.Property(p => p.Summary)

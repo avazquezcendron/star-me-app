@@ -1,10 +1,13 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using AutoMapper.QueryableExtensions;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Conventions;
+using StarMeApp.Application.Contracts.DTOs.Common;
 using StarMeApp.Application.Repositories;
 using StarMeApp.Domain.Common;
 using StarMeApp.Infrastructure.Persistence.Contexts;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
 
 namespace StarMeApp.Infrastructure.Persistence.Repositories
@@ -21,16 +24,6 @@ namespace StarMeApp.Infrastructure.Persistence.Repositories
         public virtual async Task<T> GetByIdAsync(TId id)
         {
             return await _dbContext.Set<T>().FindAsync(id);
-        }
-
-        public virtual async Task<IEnumerable<T>> GetPagedReponseAsync(int pageNumber, int pageSize)
-        {
-            return await _dbContext
-                .Set<T>()
-                .Skip((pageNumber - 1) * pageSize)
-                .Take(pageSize)
-                .AsNoTracking()
-                .ToListAsync();
         }
 
         public virtual async Task<T> AddAsync(T entity)
@@ -53,11 +46,27 @@ namespace StarMeApp.Infrastructure.Persistence.Repositories
             await _dbContext.SaveChangesAsync();
         }
 
-        public virtual async Task<IEnumerable<T>> GetAllAsync()
+        public virtual async Task<IEnumerable<T>> GetAllAsync(IRequestPaginationDTO requestPaginationDTO)
         {
-            return await _dbContext
-                 .Set<T>()
-                 .ToListAsync();
+            if (requestPaginationDTO.PageSize.GetValueOrDefault() > 0 && requestPaginationDTO.PageNumber.GetValueOrDefault() > 0)
+            {
+                requestPaginationDTO.TotalSize = await _dbContext
+                                                    .Set<T>()
+                                                    .CountAsync();
+                return await _dbContext
+                .Set<T>()
+                .OrderByDescending(x => x.Id)
+                .Skip((requestPaginationDTO.PageNumber.GetValueOrDefault() - 1) * requestPaginationDTO.PageSize.GetValueOrDefault())
+                .Take(requestPaginationDTO.PageSize.GetValueOrDefault())
+                .AsNoTracking()
+                .ToListAsync();
+            }
+            else
+            {
+                return await _dbContext
+                    .Set<T>()
+                    .ToListAsync();
+            }
         }
     }
 }

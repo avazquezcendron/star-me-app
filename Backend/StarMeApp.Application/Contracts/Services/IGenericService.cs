@@ -9,8 +9,8 @@ namespace StarMeApp.Application.Contracts.Services
     {
         Task<ResponseValueDTO<TGetDto>> GetByIdAsync(TIdTDto id);
         Task<ResponseValueDTO<TAddDto>> GetByIdAsyncForPatch(TIdTDto id);
-        Task<ResponseListDTO<TGetDto>> GetAllAsync();
-        Task<PagedResponseDTO<TGetDto>> GetPagedReponseAsync(int pageNumber, int pageSize);
+        Task<ResponseListDTO<TGetDto>> GetAllAsync(IRequestPaginationDTO paginationDTO);
+        //Task<PagedResponseDTO<TGetDto>> GetPagedReponseAsync(int pageNumber, int pageSize);
         Task<ResponseValueDTO<TIdTDto>> AddAsync(TAddDto entity);
         Task<ResponseDTO> UpdateAsync(TAddDto entity);
         Task<ResponseDTO> DeleteAsync(TIdTDto id);

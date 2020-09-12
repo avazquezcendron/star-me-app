@@ -6,6 +6,8 @@ using StarMeApp.Domain.BusinessEntities;
 using System.Linq;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using StarMeApp.Application.Contracts.DTOs.Common;
+using System;
 
 namespace StarMeApp.Infrastructure.Persistence.Services
 {
@@ -68,6 +70,43 @@ namespace StarMeApp.Infrastructure.Persistence.Services
                 }
                 entity.AddTag(tag);
             }
+        }
+
+        public async Task<ResponseListDTO<GetStoryDTO>> GetStoriesByTag(long tagId)
+        {
+            var responseDTO = new ResponseListDTO<GetStoryDTO>();
+            try
+            {
+                IEnumerable<Story> listBEs = await (this._repository as IStoryRepositoryAsync).GetStoriesByTag(tagId);
+                IEnumerable<GetStoryDTO> listDTOs = from be in listBEs select (this.MapDTO(be));
+                responseDTO.Data = listDTOs;
+                responseDTO.TotalListCount = listDTOs.Count();
+            }
+            catch (Exception e)
+            {
+                //TODO: improve exception handling with more detailed exceptions.
+                responseDTO.AddMessage(MessageKind.Error, e.Message);
+            }
+
+            return responseDTO;
+        }
+        public async Task<ResponseListDTO<GetStoryDTO>> GetStoriesByTitle(string title)
+        {
+            var responseDTO = new ResponseListDTO<GetStoryDTO>();
+            try
+            {
+                IEnumerable<Story> listBEs = await (this._repository as IStoryRepositoryAsync).GetStoriesByTitle(title);
+                IEnumerable<GetStoryDTO> listDTOs = from be in listBEs select (this.MapDTO(be));
+                responseDTO.Data = listDTOs;
+                responseDTO.TotalListCount = listDTOs.Count();
+            }
+            catch (Exception e)
+            {
+                //TODO: improve exception handling with more detailed exceptions.
+                responseDTO.AddMessage(MessageKind.Error, e.Message);
+            }
+
+            return responseDTO;
         }
     }
 }

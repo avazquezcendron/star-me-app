@@ -15,23 +15,23 @@ namespace StarMeApp.Infrastructure.Persistence.Services
         where TGetDto : IGetDTO<TIdTDto>
         where TBe : IBusinessEntity<TIdTBe>
     {
-        protected IGenericRepositoryAsync<TBe, TIdTBe> _genericRepository { get; set; }
+        protected IGenericRepositoryAsync<TBe, TIdTBe> _repository { get; set; }
         protected IMapper _mapper;
 
         public GenericService(IMapper mapper, IGenericRepositoryAsync<TBe, TIdTBe> genericRepository)
         {
             this._mapper = mapper;
-            this._genericRepository = genericRepository;
+            this._repository = genericRepository;
         }
 
-        public async Task<ResponseValueDTO<TGetDto>> GetByIdAsync(TIdTDto id)
+        public virtual async Task<ResponseValueDTO<TGetDto>> GetByIdAsync(TIdTDto id)
         {
             var responseDTO = new ResponseValueDTO<TGetDto>();
             try
             {
-                TBe be = await this._genericRepository.GetByIdAsync(this._mapper.Map<TIdTBe>(id));
+                TBe be = await this._repository.GetByIdAsync(this._mapper.Map<TIdTBe>(id));
                 if (be != null)
-                    responseDTO.Response = this.MapDTO(be);
+                    responseDTO.Data = this.MapDTO(be);
                 else
                     responseDTO.AddMessage(MessageKind.Error, "Entity with ID '" + id + "' not found.");
             }
@@ -44,14 +44,14 @@ namespace StarMeApp.Infrastructure.Persistence.Services
             return responseDTO;
         }
 
-        public async Task<ResponseValueDTO<TAddDto>> GetByIdAsyncForPatch(TIdTDto id)
+        public virtual async Task<ResponseValueDTO<TAddDto>> GetByIdAsyncForPatch(TIdTDto id)
         {
             var responseDTO = new ResponseValueDTO<TAddDto>();
             try
             {
-                TBe be = await this._genericRepository.GetByIdAsync(this._mapper.Map<TIdTBe>(id));
+                TBe be = await this._repository.GetByIdAsync(this._mapper.Map<TIdTBe>(id));
                 if (be != null)
-                    responseDTO.Response = this.MapDTOForPatch(be);
+                    responseDTO.Data = this.MapDTOForPatch(be);
                 else
                     responseDTO.AddMessage(MessageKind.Error, "Entity with ID '" + id + "' not found.");
             }
@@ -62,15 +62,17 @@ namespace StarMeApp.Infrastructure.Persistence.Services
             return responseDTO;
         }
 
-        public async Task<ResponseListDTO<TGetDto>> GetAllAsync()
+        public virtual async Task<ResponseListDTO<TGetDto>> GetAllAsync(IRequestPaginationDTO paginationDTO)
         {
             var responseDTO = new ResponseListDTO<TGetDto>();
             try
             {
-                IEnumerable<TBe> listBEs = await this._genericRepository.GetAllAsync();
+                IEnumerable<TBe> listBEs = await this._repository.GetAllAsync(paginationDTO);
                 IEnumerable<TGetDto> listDTOs = from be in listBEs select (this.MapDTO(be));
-                responseDTO.Response = listDTOs;
-                responseDTO.TotalListCount = listDTOs.Count();
+                responseDTO.Data = listDTOs;
+                responseDTO.TotalListCount = paginationDTO.TotalSize.GetValueOrDefault();
+                responseDTO.PageSize = paginationDTO.PageSize;
+                responseDTO.PageNumber = paginationDTO.PageNumber;
             }
             catch (Exception e)
             {
@@ -81,19 +83,14 @@ namespace StarMeApp.Infrastructure.Persistence.Services
             return responseDTO;
         }
 
-        public async Task<PagedResponseDTO<TGetDto>> GetPagedReponseAsync(int pageNumber, int pageSize)
-        {
-            throw new NotImplementedException();
-        }
-
-        public async Task<ResponseValueDTO<TIdTDto>> AddAsync(TAddDto dto)
+        public virtual async Task<ResponseValueDTO<TIdTDto>> AddAsync(TAddDto dto)
         {
             var responseDTO = new ResponseValueDTO<TIdTDto>();
             TBe entity = await this.MapNewEntity(dto);
             try
             {
-                IBusinessEntity<TIdTBe> entityResult = await this._genericRepository.AddAsync(entity);
-                responseDTO.Response = this._mapper.Map<TIdTDto>(entityResult.Id);
+                IBusinessEntity<TIdTBe> entityResult = await this._repository.AddAsync(entity);
+                responseDTO.Data = this._mapper.Map<TIdTDto>(entityResult.Id);
             }
             catch (Exception e)
             {
@@ -103,16 +100,16 @@ namespace StarMeApp.Infrastructure.Persistence.Services
             return responseDTO;
         }
 
-        public async Task<ResponseDTO> UpdateAsync(TAddDto dto)
+        public virtual async Task<ResponseDTO> UpdateAsync(TAddDto dto)
         {
             var responseDTO = new ResponseDTO();
             try
             {
-                var entitySaved = await this._genericRepository.GetByIdAsync(this._mapper.Map<TIdTBe>(dto.Id));
+                var entitySaved = await this._repository.GetByIdAsync(this._mapper.Map<TIdTBe>(dto.Id));
                 if (entitySaved != null)
                 {
                     TBe entity = await this.MapEntity(dto, entitySaved);
-                    await this._genericRepository.UpdateAsync(entity);
+                    await this._repository.UpdateAsync(entity);
                     responseDTO.AddMessage(MessageKind.Info, "The entity "+ typeof(TAddDto) +" with ID '"+ dto.Id +"' was successfully updated.");
                 }
                 else
@@ -128,15 +125,15 @@ namespace StarMeApp.Infrastructure.Persistence.Services
             return responseDTO;
         }
 
-        public async Task<ResponseDTO> DeleteAsync(TIdTDto id)
+        public virtual async Task<ResponseDTO> DeleteAsync(TIdTDto id)
         {
             var responseDTO = new ResponseDTO();
             try
             {
-                var entitySaved = await this._genericRepository.GetByIdAsync(this._mapper.Map<TIdTBe>(id));
+                var entitySaved = await this._repository.GetByIdAsync(this._mapper.Map<TIdTBe>(id));
                 if (entitySaved != null)
                 {
-                    await this._genericRepository.DeleteAsync(entitySaved);
+                    await this._repository.DeleteAsync(entitySaved);
                     responseDTO.AddMessage(MessageKind.Info, "The entity " + typeof(TAddDto) + " with ID '" + id + "' was successfully deleted.");
                 }
                 else

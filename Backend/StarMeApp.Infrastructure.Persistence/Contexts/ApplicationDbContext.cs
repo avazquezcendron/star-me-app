@@ -38,6 +38,8 @@ namespace StarMeApp.Infrastructure.Persistence.Contexts
                         break;
                     case EntityState.Modified:
                         var prevCreatedAt = entry.Entity.AuditInfo.CreatedAt;
+                        if (prevCreatedAt == DateTime.MinValue)
+                            prevCreatedAt = DateTime.UtcNow;
                         entry.Entity.AuditInfo = new AuditInfoStruct()
                         {
                             UpdatedAt = DateTime.UtcNow,
