@@ -15,6 +15,7 @@ namespace StarMeApp.Application.Mappings
             CreateMap<Story, AddStoryDTO>().ForMember(dest => dest.Tags, opt => opt.Ignore());
             CreateMap<AddTagDTO, Tag>().ReverseMap();//Reverse is used for PATCH
             CreateMap<Tag, GetTagDTO>();
+            CreateMap<Tag, GetTagWithStoriesDTO>().ForMember(dest => dest.Stories, opt => opt.Ignore()); ;
             CreateMap<AddUserDTO, User>().ReverseMap();//Reverse is used for PATCH
             CreateMap<User, GetUserDTO>();
 

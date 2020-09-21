@@ -4,6 +4,8 @@ import { StoryService } from '../../services/story.service';
 import { ActivatedRoute } from '@angular/router';
 import { IResponseListDTO } from '../../contracts/IResponseDTO';
 import { takeWhile } from 'rxjs/internal/operators/takeWhile';
+import { TagService } from '../../services/tag.service';
+import { Tag } from '../../models/Tag';
 
 @Component({
   selector: 'app-story-list',
@@ -22,6 +24,7 @@ export class StoryListComponent implements OnInit, OnDestroy {
 
   constructor(
     public storyService: StoryService,
+    public tagService: TagService,
     private route: ActivatedRoute
   ) {}
 
@@ -30,10 +33,10 @@ export class StoryListComponent implements OnInit, OnDestroy {
       this.tagId = data.tagId;
       this.title = data.title;
       if (this.tagId) {
-        this.storyService
-          .getStoriesByTag(this.tagId)
-          .subscribe((stories: Story[]) => {
-            this.stories = stories;
+        this.tagService
+          .getTagWithStories(this.tagId)
+          .subscribe((tag: Tag) => {
+            this.stories = tag.stories;
             this.dataLoaded = true;
             this.pageNumber = 1;
           });
